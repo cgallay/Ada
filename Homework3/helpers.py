@@ -42,7 +42,7 @@ def create_swiss_map(df: pd.DataFrame, column: str) -> folium.Map:
         reset=True)
     return m
 
-
+# this is a dictionary mapping Canton to a position inside the Canton 
 dic_can_to_pos = {
     "BE": [46.950262, 7.426758],
     "SO": [47.20709, 7.53972],
@@ -63,7 +63,7 @@ dic_can_to_pos = {
     "OW": [46.858185, 8.208873],
     "NW": [46.9268, 8.405315],
     "ZG": [47.157269, 8.5373],
-    "VD": [46.573967, 6.481934],
+    "VD": [46.608256, 6.509461],
     "VS": [46.209427, 7.605942],
     "GE": [46.202409, 6.144447],
     "FR": [46.708508, 7.096611],
