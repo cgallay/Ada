@@ -12,6 +12,7 @@ def artistDensityMap(df):
     m = folium.Map([48., 5.], tiles='stamentoner', zoom_start=2)
     hm = plugins.HeatMap(df[["artist_latitude", "artist_longitude"]].values.tolist(), radius=15)
     hm.add_to(m)
+    addPlugins(m)
     return m
 
 def extendsData(df):
@@ -54,7 +55,7 @@ def showMapWithTimeAndWeight(df, radius=15, htmlFilename= 'myMap.html'):
     assert len(data) == len(index)
     hm = plugins.HeatMapWithTime(data, index=index, radius=radius)
     hm.add_to(m)
-    
+    addPlugins(m)
     if htmlFilename:
         m.save(htmlFilename)
 
@@ -79,3 +80,11 @@ def selectGenre(df, genre):
     """
     df = df[df["genre"] == genre]
     return selectData(df)
+
+def addPlugins(m):
+    plugins.Fullscreen(
+        position='bottomright',
+        title='Expand me',
+        title_cancel='Exit me',
+        force_separate_button=True).add_to(m)
+    plugins.ScrollZoomToggler().add_to(m) #Block scroll
