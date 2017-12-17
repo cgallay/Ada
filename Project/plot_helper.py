@@ -6,7 +6,8 @@ from helpers import *
 import matplotlib
 import matplotlib.pyplot as plt
 
-def plot(data, genre, infos=None, nb_genre=10, filename='scatterplot.html'):
+
+def scatter_plot(data, genre, infos=None, urls=None, nb_genre=10, filename='scatterplot.html'):
     """
     Plot the either in 2D or in 3d
     
@@ -23,7 +24,7 @@ def plot(data, genre, infos=None, nb_genre=10, filename='scatterplot.html'):
                 color=genre,
                 colorscale='Portland',
                 opacity=0.8)
-    def get_3D_trace(data, info, genre):
+    def get_3D_trace(data, info, url, genre):
         return go.Scatter3d(
             x=data[:,0],
             y=data[:,1],
@@ -31,14 +32,16 @@ def plot(data, genre, infos=None, nb_genre=10, filename='scatterplot.html'):
             mode='markers',
             hoverinfo='text+name',
             marker= get_marker(genre),
+            customdata=url,
             name=topic2genre[genre],
             text=info)
-    def get_2D_trace(data, info, genre):
+    def get_2D_trace(data, info, url, genre):
         return go.Scatter(
             x=data[:,0],
             y=data[:,1],
             mode='markers',
             hoverinfo='text+name',
+            customdata=url,
             marker= get_marker(genre),
             name=topic2genre[genre],
             text=info)
@@ -47,10 +50,11 @@ def plot(data, genre, infos=None, nb_genre=10, filename='scatterplot.html'):
     for i in range(nb_genre):
         sel_data = data[genre == i]
         sel_info = infos[genre == i]
+        sel_url = urls[genre == i]
         if sel_data.shape[1] == 3:
-            traces.append(get_3D_trace(sel_data, sel_info, i))
+            traces.append(get_3D_trace(sel_data, sel_info, sel_url, i))
         else:
-            traces.append(get_2D_trace(sel_data, sel_info, i))
+            traces.append(get_2D_trace(sel_data, sel_info, sel_url, i))
     my_axis = dict(
                     showbackground=False,
                     zeroline=False,
@@ -80,8 +84,18 @@ def plot(data, genre, infos=None, nb_genre=10, filename='scatterplot.html'):
             ))
       
     )
-    fig = go.Figure(data=traces, layout=layout)
+    return dict( data=traces, layout=layout )
+
+def plot(data, genre, infos=None, urls=None, nb_genre=10, filename='scatterplot.html'):
+    fig = go.Figure(scatter_plot(data, genre, infos, urls, nb_genre, filename))
     return plotly.offline.plot(fig, filename=filename)#, output_type='div', show_link=False, include_plotlyjs=False)
+
+def plot2div(data, genre, infos=None, urls=None, nb_genre=10, filename='output.div'):
+    fig = go.Figure(scatter_plot(data, genre, infos, urls, nb_genre, filename))
+    div = plotly.offline.plot(fig, filename=filename, output_type='div', show_link=False, include_plotlyjs=False)
+    text_file = open(filename, "w")
+    text_file.write(div)
+    text_file.close()
 
 def build_info(row):
     return "Artist name : " + row['artist_name'] + "<br>" + \
