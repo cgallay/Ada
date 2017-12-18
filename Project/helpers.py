@@ -79,10 +79,11 @@ def search_deezer(artist, title):
     return res_track[0]['preview']
 
 def complete_previews(df_deezzer, df_spotify, path=None):
-    df_deezzer = df_deezzer[[x is None for x in df_deezzer.preview_url]].set_index('track_id')
+    None_indexes = df_deezzer[[x is None for x in df_deezzer.preview_url]].set_index('track_id')
+    df_deezzer = df_deezzer.set_index('track_id')
     df_spotify = df_spotify.set_index('track_id')
     added = 0
-    for x in df_deezzer.index:
+    for x in None_indexes.index:
         extra = df_spotify.loc[x, 'preview_url']
         if (extra is not None):
             df_deezzer.loc[x, 'preview_url'] = extra
