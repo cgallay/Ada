@@ -15,7 +15,7 @@ def add_previews_spotify(df, path=None):
         try:
             tracks[track[2]] = spot.search_preview(track[0], track[1])
         except Exception:
-            print(track)
+            tracks[track[2]] = None
 
     df_previews = df_previews.set_index('track_id')
 
@@ -37,11 +37,13 @@ def add_previews_deezer(df, path=None):
     tracks = {}
 
     for ind in tqdm(range(0, len(df_previews))):
+
         track = df_previews.loc[ind, ['artist_name', 'title', 'track_id']]
         try:
             tracks[track[2]] = search_deezer(track[0], track[1])
         except Exception:
             tracks[track[2]] = None
+
 
     df_previews = df_previews.set_index('track_id')
 
@@ -76,6 +78,8 @@ def search_deezer(artist, title):
     return res_track[0]['preview']
 
 def complete_previews(df_deezzer, df_spotify, path=None):
+    df_deezzer = df_deezzer.copy()
+    df_spotify = df_spotify.copy()
     None_indexes = df_deezzer[[x is None for x in df_deezzer.preview_url]].set_index('track_id')
     df_deezzer = df_deezzer.set_index('track_id')
     df_spotify = df_spotify.set_index('track_id')
