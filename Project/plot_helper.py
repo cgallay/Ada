@@ -5,6 +5,7 @@ import numpy as np
 from helpers import *
 import matplotlib
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 def scatter_plot(data, genre, infos=None, urls=None, nb_genre=10, filename='scatterplot.html'):
@@ -113,3 +114,27 @@ def build_info(row):
 def plot2d_matplotlib(data, colors):
     plt.figure(figsize=(15,15))
     plt.scatter(data[:,0],data[:,1], color=colors)
+
+
+def genre_boxplot(df, y, y_label, title, filename):
+    fig, ax = plt.subplots()
+    fig.set_size_inches(12, 8)
+    plot = sns.boxplot(x="genre", y = y, data=df ,palette='RdYlBu', order=[0,1,2,3,4,5,6,7,8,9])
+
+    plot.set_title(title, fontsize=25)
+    plot.set_ylabel(y_label, fontsize=20, labelpad=15)
+    plot.set_xlabel('Super genre', fontsize=20, labelpad=15)
+
+    plt.savefig(filename)
+
+    plt.show()
+
+def plot_keras_loss(history):
+    # summarize history for loss
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
+    plt.title('model loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper left')
+    plt.show()
