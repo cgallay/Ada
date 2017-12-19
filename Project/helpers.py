@@ -1,10 +1,7 @@
 from tqdm import tqdm
-import requests
-import re
 from spotify import *
 
 topic2genre = {0:'Folk', 1:'Heavy Metal', 2:'Pop', 3:'Classic Rock', 4:'Soul', 5:'House', 6:'Rock', 7:'Hip Hop', 8:'Electro', 9:'Indi Rock'}
-
 
 def add_previews_spotify(df, path=None):
 
@@ -93,3 +90,4 @@ def complete_previews(df_deezzer, df_spotify, path=None):
         df_deezzer.to_pickle(path)
     print(added, ' entries were added')
     return  df_deezzer
+
