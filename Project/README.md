@@ -1,6 +1,6 @@
 # Music Style Analysis
 
-Follow this [link](cgallay.github.io/Ada) for the data story !
+Follow this [link](https://cgallay.github.io/Ada) for the data story !
 # Abstract
 
 Tastes in music can be miscellaneous and very personal. Therefore, discovering enjoyable music can sometimes be very difficult and time consuming as we often don't really know what we like so much in a particular song. This project aims to help people to enrich their musical culture in an interactive way by suggesting songs that are similar with the help of a content analysis.
