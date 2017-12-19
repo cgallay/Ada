@@ -35,6 +35,7 @@ def extendsData(df):
     return pd.DataFrame(new_df, columns=['artist_latitude', 'artist_longitude', 'weight', 'year'])
 
 def showMapWithTime(df):
+    df = df.copy()
     df["weight"] = 1
     return showMapWithTimeAndWeight(df)
 
@@ -61,16 +62,6 @@ def showMapWithTimeAndWeight(df, radius=15, htmlFilename= 'myMap.html'):
 
     return m
 
-def selectData(df):
-    """Select column of interest for map vizualization add drop rows with missing values
-    
-    parms:
-        df: DataFrame must containst ["artist_latitude", "artist_longitude", "title", "year"]
-    """
-    df = df[df["year"]!=0]
-    df = df[["artist_latitude", "artist_longitude", "title", "year"]].dropna()
-    return df
-
 def selectGenre(df, genre):
     """Select only genre of interest and complete value by calling methode :func:`~selectData()`
     
@@ -78,8 +69,8 @@ def selectGenre(df, genre):
         df: Original dataFrame from which the data comes
         genre: The genre id ranging from 0 to the number of topic on which the LDA was trained
     """
-    df = df[df["genre"] == genre]
-    return selectData(df)
+
+    return df[df["genre"] == genre]
 
 def addPlugins(m):
     plugins.Fullscreen(

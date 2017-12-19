@@ -76,6 +76,13 @@ def scatter_plot(data, genre, infos=None, urls=None, nb_genre=10, filename='scat
                     size=12,
                     color='rgb(215,215,215)'
                 )),
+            margin=go.Margin(
+                l=0,
+                r=0,
+                b=0,
+                t=0,
+                pad=4
+            ),
             autosize= True,
             scene=go.Scene(dict(
                 xaxis=my_axis,
