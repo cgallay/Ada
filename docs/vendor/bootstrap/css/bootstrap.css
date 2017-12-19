@@ -5666,10 +5666,16 @@ button.close {
 
 .bg-primary {
   background-color: #007bff !important;
+  background-image: url("fond2.png") !important;
+  background-position: center; !important
+
+
+
 }
 
 a.bg-primary:focus, a.bg-primary:hover {
   background-color: #0062cc !important;
+
 }
 
 .bg-secondary {
@@ -5713,7 +5719,11 @@ a.bg-danger:focus, a.bg-danger:hover {
 }
 
 .bg-light {
-  background-color: #f8f9fa !important;
+  background-color: #FFFFFF !important;
+}
+
+.bg-light2{
+  background-color: #F8F9FA !important;
 }
 
 a.bg-light:focus, a.bg-light:hover {
@@ -8286,6 +8296,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 
 .text-white {
   color: #fff !important;
+
 }
 
 .text-primary {
