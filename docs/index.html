@@ -25,17 +25,17 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Million song project</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a class="nav-link js-scroll-trigger" href="#about">Introduction</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+              <a class="nav-link js-scroll-trigger" href="#services">3D exploration</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
@@ -59,43 +59,48 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Introduction</h2>
-            <p class="lead">For our final project in Dr. Robert West’s Applied Data Analysis class of Autumn 2017, we decided to focus on one of the freely-available largest collection of music datasets online: the Million Song Dataset. The core of this dataset, is the feature analysis and metadata for one million songs, provided by The Echo Nest.</p>
+            <p class="lead">For our final project in Dr. Robert West’s Applied Data Analysis class of Autumn 2017, we decided to focus on one of the freely-available largest collection of music data sets online: the Million Song Dataset. The core of this data set, is the feature analysis and metadata for one million songs, provided by The Echo Nest.</p>
             <p class="lead">Since the emergence of compact disc, the music industry capabilities has expanded exponentially. Data could be stored efficiently and aggregated to this day. With the current computing capabilities, the field of big data analysis has emerged and allows us to explore and  try to discover the secrets hidden behind what  makes music such a magical and essential part throughout our lives.</p>
-            <ul>
-              <li>Something to add here ?</li>
-            </ul>
+            <p class="lead">This web page is separated into two parts and contains a majority of the relevant results  we obtained through the analysis of this data set. If you are interested in more details, you can have a look at the github page of this project.
+              The first section is about genre classification as well as chronological analysis and geographic representation of our data set.
+              The second section consists in the building of an interactive 3D plot, where the user can walk through a data cloud and explore the different genre of music and listen to short previews for a better immersive experience.
+            </p>
           </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="services" class="bg-light">
+    <section id="" class="bg-light">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Data</h2>
-            <p class="lead">The entire dataset size is 280 GB. We however, based our first analysis on a subset of 10,000 songs (1%, 1.8 GB compressed) in order to apply our algorithms on the bigger one later.
-              You will see below the first steps of our approach on this dataset</p>
+            <p class="lead">As this data set contains a million samples of song analysis, its entire size reaches 280GB.  In order to ease our exploration through this data set, we decided to base our first analysis on only a subset of 10,000 songs (1%, 1.8 GB compressed). We then decided to download an other subset of the full Million Song Dataset (sample with hashed starting with letters “A” to “F”) for a total of approximately 133’000 songs.</p>
+            <p class="lead">For the first part of our project, (“genre propagation by year”) we filtered this subset on the existing gps location of the artist. The result is a set of 43383 samples.</p>
+            <p class="lead">For the second part (3d visualization), we filtered it differently using a threshold on the song_hotttnesss feature that gave us a result of 30’000 “most popular song”.</p>
+            <p class="lead">You will see below the first steps of our approach on these data set.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="services" class="bg-light">
+    <section id="" class="bg-light">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>First look over the years</h2>
-            <p class="lead"> Let first have a look at the distribution of our dataset over the year </p>
-            <img src="images/year_distr.png" width="800" height="400">
-            <p class="lead"> From this distribution we can see that the dataset contains much more sample starting from the 90's. This could be related to the emergence of the compact disc technology developed by Sony and Philips and launched in 1982 in which much more informations could be stored. </p>
+            <p class="lead"> Let first have a look at the distribution of our data set over the year </p>
+            <img src="images/year_distr.png" width="800" height="400" align="middle">
+            <br />
+            <br />
+            <p class="lead"> From this distribution we can see that the data set contains much more sample starting from the 90's. This could be related to the emergence of the compact disc technology developed by Sony and Philips and launched in 1982 in which much more informations could be stored. </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="services" class="bg-light">
+    <section id="" class="bg-light">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
@@ -103,17 +108,20 @@
             <p class="lead"> The first challenge on which we wanted to focus, was to know, if it was possible to group the sample under a music genre according to their metadata. To detect the genre of a song we based our analysis on the artist_terms attribute. Unfortunately this feature doesn't directly contain the genre of the artist (song), but rather terms that people have associated with this artist, most of the time this terms do correspond to genre but they might also be noise (such as a city). An other drawback of this feature, is that there is a lot of different sub-genre. To deal with that, we performed LDA (Latent Dirichlet Analysis) to find 10 "super-genre".</p>
           </div>
           <div class="col-lg-8 mx-auto">
+            <br />
             <h5>LDA (Latent Dirichlet Allocation):</h5>
             <p class="lead">In natural language processing, latent Dirichlet allocation (LDA) is a statistical model that allows sets of observations to be explained by unobserved groups that explain why some parts of the data are similar. For example, in our case, if observations are terms in the list of each sample’s artist_terms feature, it would describe the feature as a mixture of a small number of topics attributable to one general related topic. The topic here would be a genre and the aim is thus to group the tags into one bigger category representing a type of music.</p>
             <img src="images/ldaM.png" width="400" height="300">
           </div>
           <div class="col-lg-8 mx-auto">
             <br />
+            <br />
             <h5>Results of our topic modeling with the top eight tags by topic:</h5>
-            <img src="images/ldaList2.jpg" width="800" height="300">
+            <img src="images/ldaList.png" width="800" height="300">
             <br />
             <br />
-            <h5>As well as their distribution in the dataset:</h5>
+            <br />
+            <h5>As well as their distribution in the data set:</h5>
             <p class="lead"></p>
             <img src="images/genre_distr.png" width="700" height="400">
 
@@ -122,7 +130,7 @@
       </div>
     </section>
 
-    <section id="services" class="bg-light">
+    <section id="" class="bg-light">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
@@ -130,19 +138,19 @@
             <form id="form1" method="post">
               <label> Select a genre: <select id="genre" onchange="setIframeSource()">
                 <option value="genres/genre0.html">Select a super genre ...</option>
-                <option value="genres/genre0.html">Genre 0 (reggae like)</option>
-                <option value="genres/genre1.html">Genre 1 (pop like)</option>
-                <option value="genres/genre2.html">Genre 2 (instrumental like)</option>
-                <option value="genres/genre3.html">Genre 3 (rock like)</option>
-                <option value="genres/genre4.html">Genre 4 (blues like)</option>
-                <option value="genres/genre5.html">Genre 5 (latin like)</option>
-                <option value="genres/genre6.html">Genre 6 (electro like)</option>
-                <option value="genres/genre7.html">Genre 7 (country like)</option>
-                <option value="genres/genre8.html">Genre 8 (heavy metal like)</option>
-                <option value="genres/genre9.html">Genre 9 (rap like)</option>
+                <option value="genres/genre0.html">Genre 0 (folk like)</option>
+                <option value="genres/genre1.html">Genre 1 (metal like)</option>
+                <option value="genres/genre2.html">Genre 2 (pop like)</option>
+                <option value="genres/genre3.html">Genre 3 (classic rock like)</option>
+                <option value="genres/genre4.html">Genre 4 (soul like)</option>
+                <option value="genres/genre5.html">Genre 5 (house like)</option>
+                <option value="genres/genre6.html">Genre 6 (rock like)</option>
+                <option value="genres/genre7.html">Genre 7 (hip hop like)</option>
+                <option value="genres/genre8.html">Genre 8 (electro like)</option>
+                <option value="genres/genre9.html">Genre 9 (indie like)</option>
               </select></label>
             </form>
-            <iframe id="myIframe" src="genres/genre0.html" width="800" height="400" allowfullscreen = true></iframe>
+            <iframe id="myIframe" src="genre0.html" width="800" height="400" allowfullscreen = true></iframe>
             <p class="lead">When visualizing the song through time on the map we realised that a song only stayed one epoch (frame) visible. For us it doesn't reflect the reality as once a song is released it will perdure for a certain amount of time. To simulate that we extend our data with duplicates of the song up to 10 years after its first apparition. We didn't want to naively duplicate the song as it would appear as a new song for 10 year long. Taking that into account, as time pass we decrease the song weight (its importance at representing the genre).</p>
           </div>
 
@@ -150,7 +158,7 @@
       </div>
     </section>
 
-    <section id="services" class="bg-light">
+    <section id="" class="bg-light">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
@@ -180,14 +188,23 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Lets make it 3D !</h2>
-            <p class="lead">Once trained using metadata, we use our model to predict the genre distribution of each song based on their timbre information.  The training and prediction were performed using a simple neural network (you can have a look at our github notebook for detailed explanations). Based on this prediction we plot the songs in a 3 dimensional space using t-SNE. For a better visualization purpose we colored each song by they super genre belonging.
-              You can now explore it and verify by yourself the accuracy of our results !<span style="color:blue"> (We advise you to use a mouse to enjoy the complete diving experience).</span>
+            <p class="lead">Once trained using metadatas, we use our model to predict the genre distribution of each song based on their timbre informations.  The training and prediction were performed using a simple neural network (you can have a look at our github notebook for detailed explanations). Based on this prediction we plot the songs in a 3 dimensional space using t-SNE, and for a better visualization purpose we colored each song by they super genre belonging.
+
+            <p class="lead">The T-SNE approach, is  is a machine learning algorithm for dimensionality reduction. It allows us to embed high-dimensional data into a two or three dimensional space, which can then be visualized in a scatter plot.
+              While PCA is a linear algorithm, that will not be able to interpret complex polynomial relationship between features, t-SNE is based on probability distributions with random walk on neighborhood graphs to find the structure within the data. The probabilities representing the similarities, come from a conversion of the high-dimensional Euclidean distances between data. This allows the algorithm to build a 2 or 3 dimensional plot with pairs of points close to each other following this distribution.
+            </p>
+            <p class="lead">
+              Close points represent songs that are similar by their content, more specifically by their timbre feature. Therefore, it is often the case that they belong to the same super genre group, but it can happen that two different styles may be “spatially” close nonetheless. This is a nice way to compare metadata classification and content similarities while discovering artists that are of a unknown/other style which matches your personal tastes !
+              You can now explore it and verify by yourself the accuracy of our results !
+            </p>
+              <span style="color:blue"> (We advise you to use a mouse to enjoy the complete diving experience).</span>
               <br />
               Clicking on a point give you access to a preview of the song ! ;)
               <br />
               <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
               <div width="800" height="400">
               </div>
+            <button type="button" onclick="alert('Hello world!')">Stop music !</button>
             <script src="js/help.js"></script>
             </p>
 
@@ -196,7 +213,7 @@
       </div>
     </section>
 
-    <section id="services" class="bg-light">
+    <section id="" class="bg-light">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
@@ -214,7 +231,13 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Contact us</h2>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+            <p class="lead"></p>
+            <ul>
+              <li>Charles Gallay</li>
+              <li>Thomas Batschelet</li>
+              <li>Boris Flückiger</li>
+            </ul>
+
           </div>
         </div>
       </div>
@@ -223,7 +246,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Million Song Project EPFL 2017</p>
       </div>
       <!-- /.container -->
     </footer>
