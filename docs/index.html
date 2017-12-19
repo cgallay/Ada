@@ -142,7 +142,7 @@
                 <option value="genres/genre9.html">Genre 9 (rap like)</option>
               </select></label>
             </form>
-            <iframe id="myIframe" src="genre0.html" width="800" height="400" allowfullscreen = true></iframe>
+            <iframe id="myIframe" src="genre0.html" width="800" height="400" allowfullscreen = true sandbox="allow-same-origin allow-scripts"></iframe>
             <p class="lead">When visualizing the song through time on the map we realised that a song only stayed one epoch (frame) visible. For us it doesn't reflect the reality as once a song is released it will perdure for a certain amount of time. To simulate that we extend our data with duplicates of the song up to 10 years after its first apparition. We didn't want to naively duplicate the song as it would appear as a new song for 10 year long. Taking that into account, as time pass we decrease the song weight (its importance at representing the genre).</p>
           </div>
 
