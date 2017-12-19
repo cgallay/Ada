@@ -79,7 +79,7 @@ def selectGenre(df, genre):
         genre: The genre id ranging from 0 to the number of topic on which the LDA was trained
     """
     df = df[df["genre"] == genre]
-    return selectData(df)
+    return df
 
 def addPlugins(m):
     plugins.Fullscreen(
