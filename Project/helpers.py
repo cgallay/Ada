@@ -1,7 +1,7 @@
 from tqdm import tqdm
 from spotify import *
 
-topic2genre = {0:'Raggae', 1:'Pop', 2:'Jazz', 3:'Rock', 4:'Blues', 5:'Latin', 6:'Electronic', 7:'Country', 8:'Metal', 9:'Rap'}
+topic2genre = {0:'Folk', 1:'Heavy Metal', 2:'Pop', 3:'Classic Rock', 4:'Soul', 5:'House', 6:'Rock', 7:'Hip Hop', 8:'Electro', 9:'Indi Rock'}
 
 def add_previews_spotify(df, path=None):
 
